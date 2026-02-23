@@ -1,102 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Captive Corp Beanies</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 20px;
+    * {
+      box-sizing: border-box;
     }
 
-    h1 {
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      color: #111;
+      background: #111;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background logo */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("logo.png") center center no-repeat;
+      background-size: 60vmin;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.9);
+      color: #f5f5f5;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #333;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .sub {
+      font-size: 13px;
       text-align: center;
-      margin-bottom: 40px;
+      color: #ccc;
+      margin-top: 4px;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px 40px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 30px;
-      max-width: 1000px;
-      margin: auto;
     }
 
     .card {
-      background: white;
+      background: rgba(255, 255, 255, 0.96);
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
       text-align: center;
+      border: 1px solid #ddd;
     }
 
     .card img {
       width: 100%;
       border-radius: 10px;
+      margin-bottom: 12px;
+      object-fit: cover;
+      max-height: 260px;
+    }
+
+    .name {
+      font-weight: 600;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
     }
 
     .price {
-      font-size: 20px;
-      margin: 10px 0;
+      font-size: 18px;
+      margin: 6px 0 14px;
       font-weight: bold;
+      color: #111;
     }
 
     select, button {
-      padding: 10px;
       width: 100%;
-      margin-top: 10px;
-      font-size: 16px;
+      padding: 10px;
+      margin-top: 8px;
+      font-size: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    select {
+      background: #fafafa;
     }
 
     button {
-      background: black;
-      color: white;
+      background: #000;
+      color: #fff;
       border: none;
       cursor: pointer;
-      border-radius: 5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     button:hover {
       background: #333;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <h1>Captive Corp — Recycled Custom Beanies</h1>
-
-  <div class="grid">
-
-    <!-- CARD 1 -->
-    <div class="card">
-      <img src="beanie1.jpg" alt="Red Patchwork Beanie">
-      <div class="price">$25</div>
-
-      <select id="beanie1">
-        <option value="">Select Beanie</option>
-        <option value="Red Patchwork Beanie">Red Patchwork Beanie</option>
-      </select>
-
-      <button onclick="orderBeanie('beanie1')">Order</button>
+  <header>
+    <div>
+      <h1>CAPTIVE CORP</h1>
+      <div class="sub">Recycled Custom Beanies — $25 Each</div>
     </div>
+  </header>
 
-    <!-- CARD 2 -->
-    <div class="card">
-      <img src="beanie2.jpg" alt="Blue Denim Beanie">
-      <div class="price">$25</div>
+  <div class="container">
+    <div class="grid">
 
-      <select id="beanie2">
-        <option value="">Select Beanie</option>
-        <option value="Blue Denim Beanie">Blue Denim Beanie</option>
-      </select>
+      <!-- CARD 1 -->
+      <div class="card">
+        <img src="beanie1.jpg" alt="Red Patchwork Beanie">
+        <div class="name">Red Patchwork Beanie</div>
+        <div class="price">$25</div>
 
-      <button onclick="orderBeanie('beanie2')">Order</button>
+        <select id="beanie1">
+          <option value="">Select this beanie</option>
+          <option value="Red Patchwork Beanie">Red Patchwork Beanie</option>
+        </select>
+
+        <button onclick="orderBeanie('beanie1')">Order</button>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="card">
+        <img src="beanie2.jpg" alt="Blue Denim Beanie">
+        <div class="name">Blue Denim Beanie</div>
+        <div class="price">$25</div>
+
+        <select id="beanie2">
+          <option value="">Select this beanie</option>
+          <option value="Blue Denim Beanie">Blue Denim Beanie</option>
+        </select>
+
+        <button onclick="orderBeanie('beanie2')">Order</button>
+      </div>
+
+      <!-- Duplicate cards for more beanies as needed -->
+
     </div>
-
   </div>
 
   <script>
@@ -108,8 +191,7 @@
         return;
       }
 
-      // Replace with your actual Google Form prefill link
-      const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd3vOFrSCR3MG0H0Bstyq45IW4sNk6Rws5Pmp5G-KTkiiqHIg/viewform?usp=pp_url&entry.1939887054=Beanie_Name_Here";
+      const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd3vOFrSCR3MG0H0Bstyq45IW4sNk6Rws5Pmp5G-KTkiiqHIg/viewform?usp=pp_url&entry.1939887054=";
 
       const finalUrl = baseUrl + encodeURIComponent(selected);
 
@@ -119,4 +201,3 @@
 
 </body>
 </html>
-
