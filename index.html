@@ -1,10 +1,122 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>My First Website</title>
-  </head>
-  <body>
-    <h1>Hello world 👋</h1>
-    <p>This is my first website.</p>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Captive Corp Beanies</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .price {
+      font-size: 20px;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    select, button {
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Captive Corp — Recycled Custom Beanies</h1>
+
+  <div class="grid">
+
+    <!-- CARD 1 -->
+    <div class="card">
+      <img src="beanie1.jpg" alt="Red Patchwork Beanie">
+      <div class="price">$25</div>
+
+      <select id="beanie1">
+        <option value="">Select Beanie</option>
+        <option value="Red Patchwork Beanie">Red Patchwork Beanie</option>
+      </select>
+
+      <button onclick="orderBeanie('beanie1')">Order</button>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card">
+      <img src="beanie2.jpg" alt="Blue Denim Beanie">
+      <div class="price">$25</div>
+
+      <select id="beanie2">
+        <option value="">Select Beanie</option>
+        <option value="Blue Denim Beanie">Blue Denim Beanie</option>
+      </select>
+
+      <button onclick="orderBeanie('beanie2')">Order</button>
+    </div>
+
+  </div>
+
+  <script>
+    function orderBeanie(selectId) {
+      const selected = document.getElementById(selectId).value;
+
+      if (!selected) {
+        alert("Please select a beanie first.");
+        return;
+      }
+
+      // Replace with your actual Google Form prefill link
+      const baseUrl = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?entry.123456789=";
+
+      const finalUrl = baseUrl + encodeURIComponent(selected);
+
+      window.open(finalUrl, "_blank");
+    }
+  </script>
+
+</body>
 </html>
+
